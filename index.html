@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: azure;
+        }
+        textarea {
+            width: 100%;
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+<script>
+    const fetchData = (url) => {
+        return new Promise((resolve) => {
+            fetch(url).then((response) => {
+                if (response.ok) {
+                    response.text().then((y) => {
+                        resolve(y);
+                    });
+                } else {
+                    resolve("DATA ÇEKİLEMEDİ");
+                }
+            });
+        });
+    }
+
+    fetchData("/index2.json").then((data) => {
+        document.querySelector("textarea").value = data;
+    });
+
+</script>
+</body>
+</html>
